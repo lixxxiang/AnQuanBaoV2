@@ -22,7 +22,8 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *annotation;
 @property (strong, nonatomic) IBOutlet UILabel *annotationLabel;
-@property (strong, nonatomic) IBOutlet UINavigationBar *navigationbar;
+//@property (strong, nonatomic) IBOutlet UINavigationBar *navigationbar;
+@property (strong, nonatomic) IBOutlet UIButton *userBtn;
 
 
 @end

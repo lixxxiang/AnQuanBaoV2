@@ -75,7 +75,9 @@
     if(b == 1){
         //login
         ViewController *vc = [ViewController alloc];
-        [self presentViewController:vc animated:YES completion:nil];
+//        [self presentViewController:vc animated:YES completion:nil];
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main"bundle:nil];
+        [self presentViewController:[story instantiateInitialViewController] animated:YES completion:nil];
     }else{
         _wrongVcode.hidden = NO;
         _wrongVcodelabel.hidden = NO;

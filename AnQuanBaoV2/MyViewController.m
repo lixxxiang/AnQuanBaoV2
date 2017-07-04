@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "ViewController.h"
+#import "LoginViewController.h"
 @interface MyViewController ()
 
 @end
@@ -19,7 +20,7 @@
     // Do any additional setup after loading the view from its nib.
     _tel.text = @"188****2121";
     [_quitLogin setBackgroundImage:[UIImage imageNamed:@"redbtn"] forState:UIControlStateNormal];
-    
+    [_quitLogin addTarget:self action:@selector(quit:) forControlEvents:UIControlEventTouchUpInside];
     
     UIImage *selectedImage=[UIImage imageNamed: @"backbtn"];
     selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -31,9 +32,15 @@
     [_navibar pushNavigationItem:item animated:NO];
 }
 
+-(void)quit:(id)sender{
+    LoginViewController *lvc = [LoginViewController alloc];
+    [self presentViewController:lvc animated:YES completion:nil];
+}
+
 -(void) click:(id)sender{
     NSLog(@"ddf");
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
 //    ViewController *vc = [ViewController alloc];
 ///    [self.view1 setHidden:YES];
 //    [self presentModalViewController:vc animated:YES];

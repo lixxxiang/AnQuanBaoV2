@@ -55,9 +55,9 @@
     
     //    [self isAnswered];
     
-    
+//    [_userBtn setBackgroundImage:[UIImage imageNamed:@"user1"] forState:UIControlStateNormal];
 //        _geocodesearch = [[BMKGeoCodeSearch alloc]init];
-    
+    [_userBtn addTarget:self action:@selector(mine:) forControlEvents:UIControlEventTouchUpInside];
     
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc] init];
     displayParam.locationViewOffsetX = 0;
@@ -74,25 +74,23 @@
 //    _annotationLabel.font = [UIFont fontWithName:@"" size:14];
     [self.view addSubview:_annotationLabel];
     _mapView.scrollEnabled = NO;
-    /////////////////////
-    //navigationbar 还没做
-    /////////////////////
-    CGFloat navBarHeight = 64.0f;
-    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, navBarHeight);
-    [_navigationbar setFrame:frame];
-//    [_navigationbar setTag:@"安全宝"];
-    [self.view addSubview:_navigationbar];
-    
-    
-    UIImage *selectedImage=[UIImage imageNamed: @"user1"];
-    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:selectedImage style:UIBarButtonItemStylePlain target:self action:@selector(mine:)];
-    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"安全宝"];
-    item.leftBarButtonItem = rightButton;
-    item.hidesBackButton = YES;
-    rightButton.tintColor=[UIColor redColor];
-    [_navigationbar pushNavigationItem:item animated:NO];
-    [self.view addSubview:_navigationbar];
+
+//    CGFloat navBarHeight = 64.0f;
+//    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, navBarHeight);
+//    [_navigationbar setFrame:frame];
+////    [_navigationbar setTag:@"安全宝"];
+//    [self.view addSubview:_navigationbar];
+//    
+//    
+//    UIImage *selectedImage=[UIImage imageNamed: @"user1"];
+//    selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:selectedImage style:UIBarButtonItemStylePlain target:self action:@selector(mine:)];
+//    UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"安全宝"];
+//    item.leftBarButtonItem = rightButton;
+//    item.hidesBackButton = YES;
+//    rightButton.tintColor=[UIColor redColor];
+//    [_navigationbar pushNavigationItem:item animated:NO];
+//    [self.view addSubview:_navigationbar];
 //    [_hidebutton addTarget:self action:@selector(mine:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:_hidebutton];
     
@@ -100,9 +98,7 @@
 
 -(void)mine:(id)sender{
     MyViewController *vc = [MyViewController alloc];
-//    [self presentViewController:vc animated:YES completion:nil];
-    LoginViewController *lvc = [LoginViewController alloc];
-    [self presentViewController:lvc animated:YES completion:nil];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)slideUp {
