@@ -9,9 +9,12 @@
 #import "ViewController.h"
 #import "MyViewController.h"
 #import "LoginViewController.h"
+#import "ArrangePoliceView.h"
 @interface ViewController (){
     CallPoliceView *cp;
     CompleteView *complete;
+    ArrangePoliceView *apv;
+    FailedPoliceView *fpv;
     BMKGeoCodeSearch* _geocodesearch;
     CLLocationDegrees latitude;
     CLLocationDegrees longitude;
@@ -49,6 +52,18 @@
     complete.frame = CGRectMake(16, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width - 32, 145);
     [self.view addSubview:complete];
     [complete setHidden:YES];
+    
+    apv = [[ArrangePoliceView alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 198)];
+    apv.frame = CGRectMake(16, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width - 32, 99);
+    [self.view addSubview:apv];
+    apv.delegate = self;
+    [apv setHidden:YES];
+    
+    fpv = [[FailedPoliceView alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 290)];
+    fpv.frame = CGRectMake(16, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width - 32, 145);
+    [self.view addSubview:fpv];
+    fpv.delegate = self;
+    [fpv setHidden:YES];
     //    NSDictionary *views = NSDictionaryOfVariableBindings(cp);
     //    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[cp]-|"options:0metrics:nilviews:views]];
     
@@ -95,25 +110,85 @@
 //    [self.view addSubview:_hidebutton];
     
 }
+-(void)makecall{
+    UIWebView *callWebview =[[UIWebView alloc] init];
+    NSURL *telURL =[NSURL URLWithString:@"tel:10086"];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
+    [self.view addSubview:callWebview];
+
+}
+
+
+-(void)s{
+    [self agslideDown];
+    int64_t delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        // do something
+        [complete setHidden:NO];
+        [self cpslideUp];
+        _annotationLabel.textAlignment = UITextAlignmentCenter;
+        _annotationLabel.text = @"报警完成";
+    });
+}
+
+-(void)f{
+    NSLog(@"dfsf");
+    [self agslideDown];
+    int64_t delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        // do something
+        [fpv setHidden:NO];
+        [self fslideUp];
+        _annotationLabel.textAlignment = UITextAlignmentCenter;
+        _annotationLabel.text = @"报警失败";
+    });
+}
+
 
 -(void)mine:(id)sender{
     MyViewController *vc = [MyViewController alloc];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
--(void)slideUp {
+-(void)agslideUp {
     [UIView beginAnimations:@"" context:nil];
     [UIView setAnimationDuration:0.2];
     [UIView setAnimationDelegate:self];
-    complete.frame= CGRectMake(16, [UIScreen mainScreen].bounds.size.height - 145, [UIScreen mainScreen].bounds.size.width - 32, 145);
+    apv.frame= CGRectMake(16, [UIScreen mainScreen].bounds.size.height - 99, [UIScreen mainScreen].bounds.size.width - 32, 99);
     [UIView commitAnimations];
 }
 
--(void)slideDown{
+-(void)fslideUp {
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.2];
+    [UIView setAnimationDelegate:self];
+    fpv.frame = CGRectMake(16, [UIScreen mainScreen].bounds.size.height - 145, [UIScreen mainScreen].bounds.size.width - 32, 145);
+    [UIView commitAnimations];
+}
+
+-(void)cpslideUp {
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.2];
+    [UIView setAnimationDelegate:self];
+    complete.frame = CGRectMake(16, [UIScreen mainScreen].bounds.size.height - 145, [UIScreen mainScreen].bounds.size.width - 32, 145);
+    [UIView commitAnimations];
+}
+
+-(void)callslideDown{
     [UIView beginAnimations:@"" context:nil];
     [UIView setAnimationDuration:0.2];
     [UIView setAnimationDelegate:self];
     cp.frame= CGRectMake(16, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width - 32, 145);
+    [UIView commitAnimations];
+}
+
+-(void)agslideDown{
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.2];
+    [UIView setAnimationDelegate:self];
+    apv.frame= CGRectMake(16, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width - 32, 145);
     [UIView commitAnimations];
 }
 
@@ -182,17 +257,18 @@
 
 -(void)callPolice{
     //post crime scene location
-    
-    NSURL *url = [NSURL URLWithString:@"http://10.10.90.39:3000/location"];
+    NSLog(@"%@",URLPrefix);
+    NSURL *url = [NSURL URLWithString:[URLPrefix stringByAppendingString:@"location"]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:2.0f];
     request.HTTPMethod = @"POST";
     NSString *la = [@"distance=100&lat=" stringByAppendingString:[NSString stringWithFormat:@"%lf",latitude]];
     NSString *lo = [@"&lon=" stringByAppendingString:[NSString stringWithFormat:@"%lf",longitude]];
+    NSLog(@"url:%@",[la stringByAppendingString:lo]);
     request.HTTPBody = [[la stringByAppendingString:lo] dataUsingEncoding:NSUTF8StringEncoding];
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"crime scene location:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }] resume];
-    [self slideDown];
+    [self callslideDown];
     int64_t delayInSeconds = 0.5;      // 延迟的时间
     /*
      *@parameter 1,时间参照，从此刻开始计时
@@ -201,10 +277,10 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         // do something
-        [complete setHidden:NO];
-        [self slideUp];
+        [apv setHidden:NO];
+        [self agslideUp];
         _annotationLabel.textAlignment = UITextAlignmentCenter;
-        _annotationLabel.text = @"已安排警力";
+        _annotationLabel.text = @"正在安排警力";
     });
     
     

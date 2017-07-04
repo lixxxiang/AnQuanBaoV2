@@ -13,8 +13,10 @@
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import "CallPoliceView.h"
 #import "CompleteView.h"
+#import "ArrangePoliceView.h"
+#import "FailedPoliceView.h"
 
-@interface ViewController : UIViewController<BMKGeoCodeSearchDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate, cpDelegate >
+@interface ViewController : UIViewController<BMKGeoCodeSearchDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate, cpDelegate, agDelegate, fDelegate>
 {
     BMKMapView *_mapView;
     BMKLocationService *_locService;

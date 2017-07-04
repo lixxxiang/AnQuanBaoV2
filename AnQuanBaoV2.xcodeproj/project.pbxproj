@@ -43,6 +43,11 @@
 		949970961F0B31D90060E69A /* toast.png in Resources */ = {isa = PBXBuildFile; fileRef = 949970951F0B31D90060E69A /* toast.png */; };
 		9499709A1F0B37FF0060E69A /* VCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949970981F0B37FF0060E69A /* VCodeViewController.m */; };
 		9499709B1F0B37FF0060E69A /* VCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949970991F0B37FF0060E69A /* VCodeViewController.xib */; };
+		949970DC1F0B72B30060E69A /* ArrangePoliceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949970DB1F0B72B30060E69A /* ArrangePoliceView.xib */; };
+		949970DF1F0B72C40060E69A /* ArrangePoliceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 949970DE1F0B72C40060E69A /* ArrangePoliceView.m */; };
+		949970E11F0B7E920060E69A /* FailedPoliceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949970E01F0B7E920060E69A /* FailedPoliceView.xib */; };
+		949970E41F0B7EB10060E69A /* FailedPoliceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 949970E31F0B7EB10060E69A /* FailedPoliceView.m */; };
+		949970E61F0B7FD80060E69A /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 949970E51F0B7FD80060E69A /* fail.png */; };
 		FC46D1FE7CDF097E217124C7 /* libPods-AnQuanBaoV2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CD2B89D474C8370FC7A749 /* libPods-AnQuanBaoV2Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +121,14 @@
 		949970971F0B37FF0060E69A /* VCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCodeViewController.h; sourceTree = "<group>"; };
 		949970981F0B37FF0060E69A /* VCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCodeViewController.m; sourceTree = "<group>"; };
 		949970991F0B37FF0060E69A /* VCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCodeViewController.xib; sourceTree = "<group>"; };
+		949970DB1F0B72B30060E69A /* ArrangePoliceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArrangePoliceView.xib; sourceTree = "<group>"; };
+		949970DD1F0B72C40060E69A /* ArrangePoliceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrangePoliceView.h; sourceTree = "<group>"; };
+		949970DE1F0B72C40060E69A /* ArrangePoliceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrangePoliceView.m; sourceTree = "<group>"; };
+		949970E01F0B7E920060E69A /* FailedPoliceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailedPoliceView.xib; sourceTree = "<group>"; };
+		949970E21F0B7EB10060E69A /* FailedPoliceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedPoliceView.h; sourceTree = "<group>"; };
+		949970E31F0B7EB10060E69A /* FailedPoliceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedPoliceView.m; sourceTree = "<group>"; };
+		949970E51F0B7FD80060E69A /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
+		949970E71F0BA8570060E69A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BD0481FDB12C9380AA30A45F /* libPods-AnQuanBaoV2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnQuanBaoV2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CD2B89D474C8370FC7A749 /* libPods-AnQuanBaoV2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnQuanBaoV2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89FF21392A1995D159FE411 /* Pods-AnQuanBaoV2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnQuanBaoV2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnQuanBaoV2Tests/Pods-AnQuanBaoV2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,19 +181,6 @@
 		941BB10E1F05DADC00F19A3E = {
 			isa = PBXGroup;
 			children = (
-				949970951F0B31D90060E69A /* toast.png */,
-				949970931F0B19780060E69A /* btnorange.png */,
-				948701031F0A717B00AF050C /* btngray.png */,
-				948701041F0A717B00AF050C /* icon1.png */,
-				948701051F0A717B00AF050C /* line.png */,
-				948700FA1F0A56C400AF050C /* backbtn.png */,
-				948700FB1F0A56C400AF050C /* redbtn.png */,
-				948700F11F0A389F00AF050C /* user1.png */,
-				948700EF1F0A008700AF050C /* annotation.png */,
-				944BE9871F09D1F900873FE4 /* complete.png */,
-				941BB15D1F063E4700F19A3E /* image.png */,
-				941BB1591F0639C700F19A3E /* in.png */,
-				941BB15A1F0639C700F19A3E /* out.png */,
 				941BB1531F05DC3D00F19A3E /* Resources */,
 				941BB1191F05DADC00F19A3E /* AnQuanBaoV2 */,
 				941BB1331F05DADC00F19A3E /* AnQuanBaoV2Tests */,
@@ -228,6 +228,12 @@
 				949970971F0B37FF0060E69A /* VCodeViewController.h */,
 				949970981F0B37FF0060E69A /* VCodeViewController.m */,
 				949970991F0B37FF0060E69A /* VCodeViewController.xib */,
+				949970DB1F0B72B30060E69A /* ArrangePoliceView.xib */,
+				949970DD1F0B72C40060E69A /* ArrangePoliceView.h */,
+				949970DE1F0B72C40060E69A /* ArrangePoliceView.m */,
+				949970E01F0B7E920060E69A /* FailedPoliceView.xib */,
+				949970E21F0B7EB10060E69A /* FailedPoliceView.h */,
+				949970E31F0B7EB10060E69A /* FailedPoliceView.m */,
 			);
 			path = AnQuanBaoV2;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				941BB11B1F05DADC00F19A3E /* main.m */,
+				949970E71F0BA8570060E69A /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -261,6 +268,20 @@
 		941BB1531F05DC3D00F19A3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				949970E51F0B7FD80060E69A /* fail.png */,
+				949970951F0B31D90060E69A /* toast.png */,
+				949970931F0B19780060E69A /* btnorange.png */,
+				948701031F0A717B00AF050C /* btngray.png */,
+				948701041F0A717B00AF050C /* icon1.png */,
+				948701051F0A717B00AF050C /* line.png */,
+				948700FA1F0A56C400AF050C /* backbtn.png */,
+				948700FB1F0A56C400AF050C /* redbtn.png */,
+				948700F11F0A389F00AF050C /* user1.png */,
+				948700EF1F0A008700AF050C /* annotation.png */,
+				944BE9871F09D1F900873FE4 /* complete.png */,
+				941BB15D1F063E4700F19A3E /* image.png */,
+				941BB1591F0639C700F19A3E /* in.png */,
+				941BB15A1F0639C700F19A3E /* out.png */,
 				941BB1511F05DC3500F19A3E /* mapapi.bundle */,
 			);
 			name = Resources;
@@ -401,17 +422,20 @@
 				941BB12A1F05DADC00F19A3E /* LaunchScreen.storyboard in Resources */,
 				948701071F0A717B00AF050C /* icon1.png in Resources */,
 				948701061F0A717B00AF050C /* btngray.png in Resources */,
+				949970DC1F0B72B30060E69A /* ArrangePoliceView.xib in Resources */,
 				949970961F0B31D90060E69A /* toast.png in Resources */,
 				944BE9831F09CEF300873FE4 /* CompleteView.xib in Resources */,
 				948700F21F0A389F00AF050C /* user1.png in Resources */,
 				941BB1521F05DC3500F19A3E /* mapapi.bundle in Resources */,
 				941BB15B1F0639C700F19A3E /* in.png in Resources */,
+				949970E61F0B7FD80060E69A /* fail.png in Resources */,
 				948700FD1F0A56C400AF050C /* redbtn.png in Resources */,
 				941BB1271F05DADC00F19A3E /* Assets.xcassets in Resources */,
 				948700F91F0A50AB00AF050C /* MyViewController.xib in Resources */,
 				941BB15C1F0639C700F19A3E /* out.png in Resources */,
 				948701081F0A717B00AF050C /* line.png in Resources */,
 				944BE9881F09D1F900873FE4 /* complete.png in Resources */,
+				949970E11F0B7E920060E69A /* FailedPoliceView.xib in Resources */,
 				948700F01F0A008700AF050C /* annotation.png in Resources */,
 				941BB1251F05DADC00F19A3E /* Main.storyboard in Resources */,
 				948700FC1F0A56C400AF050C /* backbtn.png in Resources */,
@@ -586,6 +610,8 @@
 				941BB1221F05DADC00F19A3E /* ViewController.m in Sources */,
 				941BB11F1F05DADC00F19A3E /* AppDelegate.mm in Sources */,
 				948701011F0A693A00AF050C /* LoginViewController.m in Sources */,
+				949970DF1F0B72C40060E69A /* ArrangePoliceView.m in Sources */,
+				949970E41F0B7EB10060E69A /* FailedPoliceView.m in Sources */,
 				941BB1581F05DE4300F19A3E /* CallPoliceView.m in Sources */,
 				941BB11C1F05DADC00F19A3E /* main.m in Sources */,
 			);
@@ -740,6 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EG38A8CGS3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AnQuanBaoV2/PrefixHeader.pch";
 				INFOPLIST_FILE = AnQuanBaoV2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cgwx.lixiang.AnQuanBaoV2;
@@ -753,6 +780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EG38A8CGS3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AnQuanBaoV2/PrefixHeader.pch";
 				INFOPLIST_FILE = AnQuanBaoV2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cgwx.lixiang.AnQuanBaoV2;

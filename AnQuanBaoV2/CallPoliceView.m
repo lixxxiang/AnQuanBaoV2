@@ -59,8 +59,8 @@ UISwipeGestureRecognizer * recognizer;
 
 -(void)clickCategory:(UITapGestureRecognizer* )gestureRecognizer
 {
-    UIView *viewClicked=[gestureRecognizer view];
-    if (viewClicked==_imageView) {
+    UIView *viewClicked = [gestureRecognizer view];
+    if (viewClicked == _imageView) {
         [delegate callPolice];
     }
 }

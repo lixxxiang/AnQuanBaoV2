@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol secondViewDelegate
+-(void)passViewController:(NSString*)str;//1a.定义协议与方法
+@end
 @interface LoginViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIButton *vcodeBtn;
+@property(retain,nonatomic)id<secondViewDelegate>secondDelegate;
+@property (strong, nonatomic) IBOutlet UIButton *vcodeBtn;//获取验证码
 @property (strong, nonatomic) IBOutlet UIImageView *icon;
 @property (strong, nonatomic) IBOutlet UIImageView *line;
 @property (strong, nonatomic) IBOutlet UITextField *input;

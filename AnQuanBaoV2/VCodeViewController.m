@@ -11,6 +11,7 @@
 @interface VCodeViewController (){
     int secondsCountDown; //倒计时总时长
     NSTimer *countDownTimer;
+    NSString *tel;
 }
 
 @end
@@ -22,11 +23,13 @@
     // Do any additional setup after loading the view from its nib.
     [_loginbtn setBackgroundImage:[UIImage imageNamed:@"btngray"] forState:UIControlStateNormal];
     [_line setImage:[UIImage imageNamed:@"line"]];
-    _vcodeInfo.text = @"验证码已发送到 130 0000 0000";
+    _vcodeInfo.text = [@"验证码已发送到" stringByAppendingString:tel];
     [_backBtn setBackgroundImage:[UIImage imageNamed:@"backbtn"] forState:UIControlStateNormal];
     [_backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [_inputVcode addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    secondsCountDown = 5;
+    
+    
+    secondsCountDown = 60;
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
     _countdown.text=[NSString stringWithFormat:@"%d秒后 重新发送验证码", secondsCountDown];
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClick)];
@@ -34,6 +37,12 @@
     _resend.userInteractionEnabled = YES;
     [_loginbtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [_wrongVcode setImage:[UIImage imageNamed:@"toast"]];
+    
+}
+
+-(void)passViewController:(NSString *)str{
+    NSLog(@"-----------%@",str);
+    tel = str;
 }
 
 -(void)timeFireMethod{
@@ -49,7 +58,7 @@
 - (void)labelClick {
     _countdown.hidden = NO;
     _resend.hidden = YES;
-    secondsCountDown = 5;
+    secondsCountDown = 60;
     countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeFireMethod) userInfo:nil repeats:YES];
     _countdown.text=[NSString stringWithFormat:@"%d秒后 重新发送验证码", secondsCountDown];
 }

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
+@interface VCodeViewController : UIViewController<secondViewDelegate>{
 
-@interface VCodeViewController : UIViewController
+}
 @property (strong, nonatomic) IBOutlet UIButton *backBtn;
 @property (strong, nonatomic) IBOutlet UILabel *countdown;
 @property (strong, nonatomic) IBOutlet UILabel *vcodeInfo;

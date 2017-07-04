@@ -8,6 +8,9 @@
 
 #import "LoginViewController.h"
 #import "VCodeViewController.h"
+
+
+
 @interface LoginViewController ()
 
 @end
@@ -23,6 +26,7 @@
     [_input addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [_vcodeBtn addTarget:self action:@selector(vcodeValidate:) forControlEvents:UIControlEventTouchUpInside];
     [_vcodeBtn setBackgroundImage:[UIImage imageNamed:@"btngray"] forState:UIControlStateNormal];
+    _input.keyboardType = UIKeyboardTypeNumberPad;
 }
 
 -(void)textFieldDidChange :(UITextField *)theTextField{
@@ -33,12 +37,25 @@
 }
 
 -(void)vcodeValidate:(id)sender{
-    BOOL *str = [self valiMobile:_input.text];
+    BOOL str = [self valiMobile:_input.text];//判断是否合法手机号
     NSLog(@"%d",str);
-    str = 1;//test
-    if(str == 1){
+    //str = 1;//test
+    if(str == 1){//1 合法 0 非法
         //发送验证码
-        VCodeViewController *vvc = [VCodeViewController alloc];
+        NSURL *url = [NSURL URLWithString:[URLPrefix stringByAppendingString:@"mobile/common/sendMessage/"]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:2.0f];
+        request.HTTPMethod = @"POST";
+        NSString *tel = [@"telephone=" stringByAppendingString : _input.text];
+        request.HTTPBody = [tel dataUsingEncoding : NSUTF8StringEncoding];
+        [[[NSURLSession sharedSession] dataTaskWithRequest : request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"return:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }] resume];
+
+        
+        //跳转
+        VCodeViewController *vvc = [[VCodeViewController alloc]init];
+        self.secondDelegate = vvc;
+        [self.secondDelegate passViewController:_input.text];
         [self presentViewController:vvc animated:YES completion:nil];
     }else{
         [_vcodeBtn setUserInteractionEnabled:NO];
@@ -72,17 +89,9 @@
     {
         return NO;
     }else{
-        /**
-         * 移动号段正则表达式
-         */
+
         NSString *CM_NUM = @"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$";
-        /**
-         * 联通号段正则表达式
-         */
         NSString *CU_NUM = @"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$";
-        /**
-         * 电信号段正则表达式
-         */
         NSString *CT_NUM = @"^((133)|(153)|(177)|(18[0,1,9]))\\d{8}$";
         NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM_NUM];
         BOOL isMatch1 = [pred1 evaluateWithObject:mobile];
