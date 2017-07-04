@@ -7,8 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import <BaiduMapAPI_Location/BMKLocationComponent.h>
+#import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
+#import "CallPoliceView.h"
+#import "CompleteView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<BMKGeoCodeSearchDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate, cpDelegate >
+{
+    BMKMapView *_mapView;
+    BMKLocationService *_locService;
+}
+
+@property (strong, nonatomic) IBOutlet UIImageView *annotation;
+@property (strong, nonatomic) IBOutlet UILabel *annotationLabel;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationbar;
 
 
 @end

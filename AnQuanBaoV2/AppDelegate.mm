@@ -17,6 +17,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:@"bB2sKH9UsomWOve4aXQPhkwBh1ImYnPu"  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    [self.window addSubview:viewController.view];
+    [self.window makeKeyAndVisible];
+    
+//    _mapManager = [[BMKMapManager alloc]init];
+//    BOOL ret = [_mapManager start:@"bB2sKH9UsomWOve4aXQPhkwBh1ImYnPu"  generalDelegate:nil];
+//    if (!ret) {
+//        NSLog(@"manager start failed!");
+//    }
+//    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginViewController" bundle:nil];
+//    LoginViewController *lvc = [LoginViewController alloc];
+//    self.window.rootViewController = lvc;
+//    [self.window addSubview:viewController.view];
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 

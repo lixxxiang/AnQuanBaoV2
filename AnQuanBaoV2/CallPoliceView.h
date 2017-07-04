@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol cpDelegate<NSObject>
+-(void)slideUp;
+-(void)slideDown;
+-(void)callPolice;
+-(void)answer;
+@end
 
 @interface CallPoliceView : UIView
-
+@property (strong, nonatomic) IBOutlet UIButton *CPbtn;
+@property (strong, nonatomic) id<cpDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIView *cpView;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @end
